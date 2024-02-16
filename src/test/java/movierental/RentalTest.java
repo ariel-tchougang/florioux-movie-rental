@@ -14,6 +14,31 @@ public class RentalTest {
     }
 
     @Test
+    public void bonusForRegularAndChildrenMoviesIsOne() {
+        Movie movie = new Movie("movie", Movie.REGULAR);
+        Rental rental = new Rental(movie, 1);
+        assertEquals(1, rental.getBonus());
+
+        movie = new Movie("movie", Movie.CHILDRENS);
+        rental = new Rental(movie, 1);
+        assertEquals(1, rental.getBonus());
+    }
+
+    @Test
+    public void bonusForNewReleasesIsOneWhenDaysRentedEqualsOne() {
+        Movie movie = new Movie("movie", Movie.NEW_RELEASE);
+        Rental rental = new Rental(movie, 1);
+        assertEquals(1, rental.getBonus());
+    }
+
+    @Test
+    public void bonusForNewReleasesIsTwoWhenDaysRentedGreaterThanOne() {
+        Movie movie = new Movie("movie", Movie.NEW_RELEASE);
+        Rental rental = new Rental(movie, 2);
+        assertEquals(2, rental.getBonus());
+    }
+
+    @Test
     public void priceForNewReleasesIs3xDaysRented() {
         Movie movie = new Movie("movie", Movie.NEW_RELEASE);
         Rental rental = new Rental(movie, 4);

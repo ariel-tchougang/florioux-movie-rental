@@ -34,4 +34,13 @@ public class Rental {
         int days = Math.max(_daysRented, basicPriceDuration);
         return basicPrice + (days - basicPriceDuration) * 1.5;
     }
+
+    public int getBonus() {
+
+        if (Movie.NEW_RELEASE == _movie.getPriceCode()) {
+            return _daysRented > 1 ? 2 : 1;
+        }
+
+        return 1;
+    }
 }
