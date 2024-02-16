@@ -3,12 +3,18 @@ package movierental;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 
 public class RentalTest {
 
+    @Test(expected = IllegalArgumentException.class)
+    public void throwExceptionWhenDaysRentedLessThanOne() {
+        Movie movie = new Movie("movie", Movie.REGULAR);
+        new Rental(movie, 0);
+    }
+
     @Test
-    public void priceForNewReleasesIs3xDayRented() {
+    public void priceForNewReleasesIs3xDaysRented() {
         Movie movie = new Movie("movie", Movie.NEW_RELEASE);
         Rental rental = new Rental(movie, 4);
         assertEquals(12, rental.getPrice(), 0.0);

@@ -9,6 +9,9 @@ public class Rental {
     private final int _daysRented;
 
     public Rental(Movie movie, int daysRented) {
+        if (daysRented < 1) {
+            throw new IllegalArgumentException("Days rented must be greater than 0");
+        }
         _movie = movie;
         _daysRented = daysRented;
     }
