@@ -1,22 +1,21 @@
 package movierental;
 
-import java.util.List;
 
 public class BasicStatementGenerator implements StatementGenerator {
     @Override
-    public String generate(String customerName, List<Rental> customerRentals) {
+    public String generate(Customer customer) {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        StringBuilder result = new StringBuilder("Rental Record for " + customerName + "\n");
+        StringBuilder result = new StringBuilder("Rental Record for " + customer.getName() + "\n");
 
-        for (Rental each : customerRentals) {
-            double thisAmount = each.getPrice();
+        for (Rental rental : customer.getRentals()) {
+            double thisAmount = rental.getPrice();
 
             // add frequent renter points
-            frequentRenterPoints += each.getBonus();
+            frequentRenterPoints += rental.getBonus();
 
             // show figures for this rental
-            result.append("\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n");
+            result.append("\t").append(rental.getMovie().getTitle()).append("\t").append(thisAmount).append("\n");
             totalAmount += thisAmount;
         }
 

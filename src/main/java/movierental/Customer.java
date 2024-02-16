@@ -22,6 +22,10 @@ public class Customer {
     }
 
     public String statement(StatementGenerator generator) {
-        return generator.generate(_name, Collections.unmodifiableList(_rentals));
+        return generator.generate(this);
+    }
+
+    public List<Rental> getRentals() {
+        return Collections.unmodifiableList(_rentals);
     }
 }
