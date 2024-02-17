@@ -27,4 +27,29 @@ public class CustomerTest {
 
         assertEquals(expected, customer.statement(new BasicStatementGenerator()));
     }
+
+    @Test
+    public void statementWithHtmlStatementGenerator() {
+        Customer customer = new Customer("martin");
+        customer.addRental(new Rental(new Movie("Jaws", Movie.REGULAR), 2));
+        customer.addRental(new Rental(new Movie("Golden Eye", Movie.REGULAR), 3));
+        customer.addRental(new Rental(new Movie("Short New", Movie.NEW_RELEASE), 1));
+        customer.addRental(new Rental(new Movie("Long New", Movie.NEW_RELEASE), 2));
+        customer.addRental(new Rental(new Movie("Bambi", Movie.CHILDRENS), 3));
+        customer.addRental(new Rental(new Movie("Toy Story", Movie.CHILDRENS), 4));
+
+        String expected = "<h1>Rental Record for <em>martin</em></h1>\n"
+                .concat("<table>\n")
+                .concat("\t<tr><td>Jaws</td><td>2.0</td></tr>\n")
+                .concat("\t<tr><td>Golden Eye</td><td>3.5</td></tr>\n")
+                .concat("\t<tr><td>Short New</td><td>3.0</td></tr>\n")
+                .concat("\t<tr><td>Long New</td><td>6.0</td></tr>\n")
+                .concat("\t<tr><td>Bambi</td><td>1.5</td></tr>\n")
+                .concat("\t<tr><td>Toy Story</td><td>3.0</td></tr>\n")
+                .concat("</table>\n")
+                .concat("<p>Amount owed is <em>19.0</em></p>\n")
+                .concat("<p>You earned <em>7</em> frequent renter points</p>");
+
+        assertEquals(expected, customer.statement(new HtmlStatementGenerator()));
+    }
 }
