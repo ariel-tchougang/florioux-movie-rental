@@ -2,19 +2,18 @@ package movierental;
 
 public class RegularMovieRental extends Rental {
 
-    public static final double SUBSEQUENT_DAILY_PRICE = 1.5;
-    private final double STANDARD_DAILY_PRICE = 2;
-    private final int STANDARD_DAILY_PRICE_DURATION = 2;
-
+    public static final double ADDITIONAL_COST_PER_DAY = 1.5;
+    public static final double PRICE = 2;
+    public static final int PRICE_DURATION = 2;
 
     public RegularMovieRental(String movieTitle, int daysRented) {
-        super(new Movie(movieTitle, Movie.REGULAR), daysRented);
+        super(new Movie(movieTitle), daysRented);
     }
 
     @Override
     public double getPrice() {
-        int daysWithMajoration = Math.max(getDaysRented(), STANDARD_DAILY_PRICE_DURATION) - STANDARD_DAILY_PRICE_DURATION;
-        return STANDARD_DAILY_PRICE + daysWithMajoration * SUBSEQUENT_DAILY_PRICE;
+        int extraDays = Math.max(getDaysRented(), PRICE_DURATION) - PRICE_DURATION;
+        return PRICE + extraDays * ADDITIONAL_COST_PER_DAY;
     }
 
     @Override

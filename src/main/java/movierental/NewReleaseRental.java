@@ -1,13 +1,16 @@
 package movierental;
 
 public class NewReleaseRental extends Rental {
+
+    public static final int DAILY_PRICE = 3;
+
     public NewReleaseRental(String movieTitle, int daysRented) {
-        super(new Movie(movieTitle, Movie.NEW_RELEASE), daysRented);
+        super(new Movie(movieTitle), daysRented);
     }
 
     @Override
     public double getPrice() {
-        return getDaysRented() * 3;
+        return getDaysRented() * DAILY_PRICE;
     }
 
     @Override

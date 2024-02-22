@@ -2,14 +2,12 @@ package movierental;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
 
 public class RentalTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void throwExceptionWhenDaysRentedLessThanOne() {
-        new Rental(new Movie("movie", Movie.REGULAR), 0) {
+        new Rental(new Movie("movie"), 0) {
 
             @Override
             public double getPrice() {
