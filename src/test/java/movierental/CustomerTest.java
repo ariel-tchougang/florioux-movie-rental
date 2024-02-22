@@ -6,7 +6,7 @@ import org.junit.Test;
 public class CustomerTest {
 
     @Test
-    public void test() {
+    public void generateBasicStatement() {
         Customer customer = new Customer("Bob");
         customer.addRental(new Rental(new Movie("Jaws", Movie.REGULAR), 2));
         customer.addRental(new Rental(new Movie("Golden Eye", Movie.REGULAR), 3));
@@ -26,6 +26,6 @@ public class CustomerTest {
                 "Amount owed is 19.0\n" +
                 "You earned 7 frequent renter points";
 
-        assertEquals(expected, customer.statement());
+        assertEquals(expected, customer.statement(new BasicStatementGenerator()));
     }
 }
