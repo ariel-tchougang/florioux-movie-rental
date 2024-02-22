@@ -8,12 +8,12 @@ public class CustomerTest {
     @Test
     public void statementWithBasicStatementGenerator() {
         Customer customer = new Customer("Bob");
-        customer.addRental(new Rental(new Movie("Jaws", Movie.REGULAR), 2));
-        customer.addRental(new Rental(new Movie("Golden Eye", Movie.REGULAR), 3));
-        customer.addRental(new Rental(new Movie("Short New", Movie.NEW_RELEASE), 1));
-        customer.addRental(new Rental(new Movie("Long New", Movie.NEW_RELEASE), 2));
-        customer.addRental(new Rental(new Movie("Bambi", Movie.CHILDRENS), 3));
-        customer.addRental(new Rental(new Movie("Toy Story", Movie.CHILDRENS), 4));
+        customer.addRental(new RegularMovieRental("Jaws", 2));
+        customer.addRental(new RegularMovieRental("Golden Eye", 3));
+        customer.addRental(new NewReleaseRental("Short New", 1));
+        customer.addRental(new NewReleaseRental("Long New", 2));
+        customer.addRental(new ChildrenMovieRental("Bambi", 3));
+        customer.addRental(new ChildrenMovieRental("Toy Story", 4));
 
         String expected = "Rental Record for Bob\n" +
                 "\tJaws\t2.0\n" +
@@ -31,12 +31,12 @@ public class CustomerTest {
     @Test
     public void statementWithHtmlStatementGenerator() {
         Customer customer = new Customer("martin");
-        customer.addRental(new Rental(new Movie("Jaws", Movie.REGULAR), 2));
-        customer.addRental(new Rental(new Movie("Golden Eye", Movie.REGULAR), 3));
-        customer.addRental(new Rental(new Movie("Short New", Movie.NEW_RELEASE), 1));
-        customer.addRental(new Rental(new Movie("Long New", Movie.NEW_RELEASE), 2));
-        customer.addRental(new Rental(new Movie("Bambi", Movie.CHILDRENS), 3));
-        customer.addRental(new Rental(new Movie("Toy Story", Movie.CHILDRENS), 4));
+        customer.addRental(new RegularMovieRental("Jaws", 2));
+        customer.addRental(new RegularMovieRental("Golden Eye", 3));
+        customer.addRental(new NewReleaseRental("Short New", 1));
+        customer.addRental(new NewReleaseRental("Long New", 2));
+        customer.addRental(new ChildrenMovieRental("Bambi", 3));
+        customer.addRental(new ChildrenMovieRental("Toy Story", 4));
 
         String expected = "<h1>Rental Record for <em>martin</em></h1>\n"
                 .concat("<table>\n")
