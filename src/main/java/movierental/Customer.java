@@ -22,7 +22,7 @@ public class Customer {
     }
 
     public String statement(StatementGenerator generator) {
-        return generator.generate(this);
+        return generator.process(this);
     }
 
     public List<Rental> getRentals() {

@@ -2,5 +2,5 @@ package movierental;
 
 
 public interface StatementGenerator {
-    String generate(Customer customer);
+    String process(Customer customer);
 }

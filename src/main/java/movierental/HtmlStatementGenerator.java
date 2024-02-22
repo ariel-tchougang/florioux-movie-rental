@@ -2,7 +2,7 @@ package movierental;
 
 public class HtmlStatementGenerator implements StatementGenerator
 {
-    public String generate(Customer customer)
+    public String process(Customer customer)
     {
         double totalAmount = 0;
         int frequentRenterPoints = 0;

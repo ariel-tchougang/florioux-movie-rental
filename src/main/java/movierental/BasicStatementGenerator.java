@@ -3,7 +3,7 @@ package movierental;
 
 public class BasicStatementGenerator implements StatementGenerator {
     @Override
-    public String generate(Customer customer) {
+    public String process(Customer customer) {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         StringBuilder result = new StringBuilder("Rental Record for " + customer.getName() + "\n");
@@ -20,8 +20,8 @@ public class BasicStatementGenerator implements StatementGenerator {
         }
 
         // add footer lines
-        result.append("Amount owed is " + totalAmount + "\n");
-        result.append("You earned " + frequentRenterPoints + " frequent renter points");
+        result.append("Amount owed is ").append(totalAmount).append("\n");
+        result.append("You earned ").append(frequentRenterPoints).append(" frequent renter points");
 
         return result.toString();
     }
