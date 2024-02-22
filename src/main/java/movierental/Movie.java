@@ -2,14 +2,14 @@ package movierental;
 
 public class Movie {
 
-    private final String _title;
+    private final String title;
 
     public Movie(String title) {
-        _title = title;
+        this.title = title;
     }
 
     public String getTitle() {
-        return _title;
+        return title;
     }
 
 }

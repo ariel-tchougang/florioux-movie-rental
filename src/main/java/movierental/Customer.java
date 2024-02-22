@@ -6,19 +6,19 @@ import java.util.List;
 
 public class Customer {
 
-    private final String _name;
-    private final List<Rental> _rentals = new ArrayList<>();
+    private final String name;
+    private final List<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
-        _name = name;
+        this.name = name;
     }
 
     public void addRental(Rental arg) {
-        _rentals.add(arg);
+        rentals.add(arg);
     }
 
     public String getName() {
-        return _name;
+        return name;
     }
 
     public String statement(StatementGenerator generator) {
@@ -26,6 +26,6 @@ public class Customer {
     }
 
     public List<Rental> getRentals() {
-        return Collections.unmodifiableList(_rentals);
+        return Collections.unmodifiableList(rentals);
     }
 }
