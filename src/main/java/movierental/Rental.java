@@ -20,4 +20,17 @@ public class Rental {
     public Movie getMovie() {
         return _movie;
     }
+
+    public double getPrice() {
+
+        if (Movie.NEW_RELEASE == getMovie().getPriceCode()) {
+            return _daysRented * 3;
+        }
+
+        if (getDaysRented() <= 2) {
+            return 2;
+        }
+
+        return 2 + (getDaysRented() - 2) * 1.5;
+    }
 }
